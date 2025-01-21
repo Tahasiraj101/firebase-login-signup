@@ -1,0 +1,186 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+/* Header Styling */
+#main-header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#main-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+#main-header ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+#main-header .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+#main-header .nav-link:hover {
+    color: #4CAF50; /* Green on hover */
+}
+
+#logout-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#logout-btn:hover {
+    background-color: #e53935;
+}
+
+#home-main-container {
+    height: 90vh;
+    background-image: url(assets/234.avif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* User Info Section */
+.user-info {
+    margin-top: 80px;
+    text-align: center;
+    padding: 20px;
+}
+
+#user-name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#user-email {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+#change-email {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Button to toggle email form */
+#change-email-btn {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+}
+
+#change-email-btn:hover {
+    background-color: #45a049;
+}
+
+/* Change Email Form */
+#change-email-form {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Light transparency for glass effect */
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    backdrop-filter: blur(8px); /* Glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Slight border for the glass effect */
+}
+
+#change-email-form label {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#new-email-input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    outline: none;
+}
+
+#new-email-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0px 0px 5px rgba(76, 175, 80, 0.5);
+}
+
+#submit-btn {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #main-header h1 {
+        font-size: 20px;
+    }
+
+    #main-header ul {
+        display: none;
+    }
+
+    .user-info {
+        padding: 15px;
+    }
+
+    #change-email-btn {
+        width: 100%;
+    }
+
+    #change-email-form {
+        width: 90%;
+    }
+}
