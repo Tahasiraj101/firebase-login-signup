@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, GithubAuthProvider} from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import './Login.css';
 
@@ -7,6 +7,23 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = getAuth();
+
+  const provider = new GithubAuthProvider();
+  const signupWithGithub = () =>{
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    console.log('github user logi^^', user)
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GithubAuthProvider.credentialFromError(error);
+    console.log('github error arha hai yarrrrrrr', error)
+  })
+  }
 
   const login = (e) => {
     e.preventDefault();
@@ -73,6 +90,7 @@ const Login = () => {
         </p>
        
         <button type="submit">Login</button>
+      <button onClick={signupWithGithub}>Signup with Github</button>
       </form>
     </div>
   );
