@@ -15,7 +15,7 @@
 }
 
 .login-container form {
-    height: 400px;
+    min-height: 400px;
     width: 350px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
@@ -60,17 +60,16 @@
 }
 
 .login-container button {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background: linear-gradient(135deg, #6a11cb 0%, #485b7c 100%);
     border: none;
     border-radius: 7px;
     color: #ffffff;
     font-size: 18px;
     font-weight: bold;
-    padding: 15px 20px;
+    padding: 12px 20px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     margin-top: 10px;
-    
 }
 .login-container form p, .link{
     color: #a6c5f9;
@@ -89,4 +88,22 @@
 .login-container button:active {
     transform: translateY(0);
     box-shadow: none;
+}
+
+.login-container button span{
+    color: #444;
+    font-size: 1.4rem
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.btn .facebook {
+    
+    color: #005eff;
+    font-size: 1.5rem;
 }

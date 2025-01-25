@@ -60,6 +60,7 @@ const Home = () => {
 
     <div id='home-main-container'>
     <div className="user-info">
+        <img src={state?.user?.photoURL} alt="" />
         <h1 id="user-name">{state?.user?.displayName}</h1>
         <h2 id="user-email">{state?.user?.email}</h2>
     </div>
