@@ -72,7 +72,7 @@ const Login = () => {
         alert("Login successfully")
       })
       .catch((error) => {
-        alert("Error during login")
+        alert("'user not found")
         console.error('user not found:', error.message);
       });
   };
