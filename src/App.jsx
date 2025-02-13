@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -6,7 +6,7 @@ import Signup from './Signup';
 import Login from './Login';
 import Home from './Home';
 import { GlobalContext } from './context/Context';
-import './App.css'
+import './App.css';
 
 function App() {
   const { state, dispatch } = useContext(GlobalContext);
@@ -17,7 +17,7 @@ function App() {
     apiKey: 'AIzaSyB_s1iVn3Jfh89UGwYc71NqcdyvVVhtq2U',
     authDomain: 'social-app-16245.firebaseapp.com',
     projectId: 'social-app-16245',
-    storageBucket: 'social-app-16245.firebaseapp.com',
+    storageBucket: 'social-app-16245.appspot.com',
     messagingSenderId: '1001149939088',
     appId: '1:1001149939088:web:114227a9384348a5154715',
   };
@@ -35,36 +35,27 @@ function App() {
         console.log('User logged out');
       }
     });
-  }, []);
 
+    return () => unsubscribe(); // Unsubscribe on component unmount
+  }, [auth, dispatch]);
 
   return (
-
     <div>
-
-      {(state?.isLogin == true) ?
+      {state?.isLogin === true ? (
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="*" element={<Navigate to='/' />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-        :
-        (state?.isLogin == false) ?
+      ) : state?.isLogin === false ? (
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="*" element={<Navigate to='/login' />} />
-        </Routes>   
-        :<p>loading.....</p>  
-      }
-
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
-<<<<<<< HEAD
-
-
-
-=======
-    
->>>>>>> fe44b36 (post & another post)
   );
 }
 

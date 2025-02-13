@@ -1,56 +1,20 @@
 /* Apply glass effect and improve overall styling */
-
 .login-container {
     height: 100vh;
     width: 100%;
-<<<<<<< HEAD
     display: flex;
-=======
->>>>>>> fe44b36 (post & another post)
     background-image: url(assets/123.avif);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-<<<<<<< HEAD
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.login-container form {
-=======
-    backdrop-filter: blur(5px);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* Loader Spinner Style */
-.loader {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-  }
-  
-  .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-.form-conatiner-btn{
->>>>>>> fe44b36 (post & another post)
+/* Login Form Container */
+.form-container-btn {
     min-height: 400px;
     width: 350px;
     background: rgba(255, 255, 255, 0.1);
@@ -65,22 +29,22 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
-<<<<<<< HEAD
-=======
+
 .login-container form {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
->>>>>>> fe44b36 (post & another post)
 
+/* Label Styling */
 .login-container label {
     text-transform: capitalize;
     color: #ffffff;
     margin-bottom: 10px;
 }
 
+/* Input Fields */
 .login-container form input {
     background-color: rgba(255, 255, 255, 0.2);
     padding: 15px 20px;
@@ -90,7 +54,6 @@
     outline: none;
     color: #ffffff;
     font-size: 16px;
-
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
@@ -104,6 +67,7 @@
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
 }
 
+/* Buttons */
 .login-container button {
     background: linear-gradient(135deg, #6a11cb 0%, #485b7c 100%);
     border: none;
@@ -116,11 +80,14 @@
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     margin-top: 10px;
 }
-.login-container form p, .link{
+
+.login-container form p,
+.link {
     color: #a6c5f9;
     font-size: 18px;
 }
-.forgot-password-button{
+
+.forgot-password-button {
     color: #ffffff;
     font-size: 18px;
 }
@@ -135,20 +102,47 @@
     box-shadow: none;
 }
 
-.login-container button span{
+.login-container button span {
     color: #444;
-    font-size: 1.4rem
+    font-size: 1.4rem;
 }
-.btn{
+
+/* Social Login Buttons */
+.btn {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
 }
 
 .btn .facebook {
-    
     color: #005eff;
     font-size: 1.5rem;
+}
+
+/* Loader Spinner Style */
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
