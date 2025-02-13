@@ -97,7 +97,12 @@ const Login = () => {
 
   return (
     <div className='login-container'>
+<<<<<<< HEAD
       <form onSubmit={login}>
+=======
+     <div className='form-conatiner-btn'>
+     <form onSubmit={login}>
+>>>>>>> fe44b36 (post & another post)
         <label htmlFor="email">
           Email:
           <input
@@ -128,12 +133,21 @@ const Login = () => {
         </p>
        
         <button type="submit">Login</button>
+<<<<<<< HEAD
+=======
+      
+      </form>
+>>>>>>> fe44b36 (post & another post)
       <div className="btn">
       <button onClick={signupWithGithub}>Signin Github <span className='github'><FaGithub /></span> </button>
       <button onClick={signupWithGoogle}>Signin Google <span className='google'><FcGoogle /></span></button>
       <button onClick={signupWithFacebook}>Signin Facebook <span className='facebook'><FaFacebook/></span></button>
       </div>
+<<<<<<< HEAD
       </form>
+=======
+     </div>
+>>>>>>> fe44b36 (post & another post)
     </div>
   );
 };

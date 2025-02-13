@@ -58,9 +58,13 @@ function App() {
       }
 
     </div>
+<<<<<<< HEAD
 
 
 
+=======
+    
+>>>>>>> fe44b36 (post & another post)
   );
 }
 

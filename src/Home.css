@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* General Styling */
 body {
     font-family: 'Arial', sans-serif;
@@ -84,10 +85,113 @@ body {
 
 #user-name {
     font-size: 2rem;
+=======
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home-container {
+    background: linear-gradient(135deg, #2a2a2a, #1e1e1e, #333, #1a1a1a, #111, #0d0d0d);
+    animation: gradient 5s ease infinite;
+    background-size: 400% 400%;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+.main-header {
+    width: 100%;
+    padding: 20px 40px;
+    background: linear-gradient(to right, #f58529, #f6e14b);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main-header h1 {
+    font-size: 28px;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+
+#logout-btn {
+    background-color: #ff5c5c;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+    background-color: #e74c3c;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+/* Main Home Container */
+.home-container {
+    width: 100%;
+    padding-top: 100px; /* Add padding to offset the fixed header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#home-main-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* User Info Styling */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.user-info img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+#user-name {
+    font-size: 22px;
+>>>>>>> fe44b36 (post & another post)
     font-weight: bold;
 }
 
 #user-email {
+<<<<<<< HEAD
     font-size: 1.4rem;
     color: #c8c8c8;
     margin-top: 10px;
@@ -186,5 +290,180 @@ body {
 
     #change-email-form {
         width: 90%;
+=======
+    font-size: 16px;
+    color: #bbb;
+}
+
+/* Add Post Section */
+.add-post {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+textarea {
+    outline: none;
+    width: 100%;
+    height: 150px;
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000000;
+    resize: none;
+    margin-bottom: 20px;
+}
+
+textarea:focus {
+    border-color: #f58529;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: #000000;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.add-post button {
+    background: #f58529;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 12px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #e87e27;
+}
+.post-card {
+    width: 70%;
+   
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+}
+.username-date{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.username-date p{
+    font-size: 1.2rem;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.username-date small{
+    font-size: 1rem;
+}
+.post-content p{
+    font-size: 1.5rem;
+    text-align: start;
+    text-transform: capitalize;
+}
+/* Profile Image */
+.profileLogo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.profileLogo img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+/* Post Actions */
+.post-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.edit-btn, .delete-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .home-container {
+        padding: 20px;
+    }
+
+    .add-post {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .post-card {
+        width: 100%;
+    }
+
+    #home-main-container {
+        padding: 20px;
+    }
+}
+
+/* Keyframes for Gradient Animation */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+>>>>>>> fe44b36 (post & another post)
     }
 }

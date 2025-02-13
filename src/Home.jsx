@@ -1,19 +1,97 @@
+<<<<<<< HEAD
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from './context/Context';
 import { getAuth, signOut , verifyBeforeUpdateEmail } from 'firebase/auth';
 import './Home.css'
+=======
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { GlobalContext } from './context/Context';
+import { getAuth, signOut } from 'firebase/auth';
+import { addDoc, collection, getFirestore, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import './index.css';
+import './Home.css';
+import { ClipLoader } from 'react-spinners';
+import moment from 'moment';
+import Swal from 'sweetalert2';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import axios from 'axios';
+>>>>>>> fe44b36 (post & another post)
 
 const Home = () => {
     const { state, dispatch } = useContext(GlobalContext);
     const [newEmail, setnewEmail] = useState("");
+<<<<<<< HEAD
     const [showEmail, setshowEmail] = useState(false);
+=======
+    const [caption, setCaption] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [posts, setPosts] = useState([]);
+    const [file, setFile] = useState();
+    const db = getFirestore();
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(db, "posts"), (snapshot) => {
+            const postList = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            setPosts(postList);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const addPost = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const formData = new FormData();
+        formData.append("file", file);  
+        formData.append("upload_preset", "post-images");  
+
+        try {
+            Swal.fire({
+                title: 'Uploading...',
+                text: 'Please wait while we upload your image',
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            const res = await axios.post("https://api.cloudinary.com/v1_1/dt30qnuro/upload", formData);
+            const imageUrl = res.data.secure_url;
+
+            await addDoc(collection(db, "posts"), {
+                userId: state?.user?.uid,
+                caption: caption,
+                userName: state?.user.displayName,
+                userProfile: state?.user?.photoURL,
+                createdAt: new Date().getTime(),
+                imageUrl: imageUrl,  
+            });
+            
+            Swal.close();
+            setCaption("");
+            setFile(null);
+            Swal.fire('Success', 'Post created successfully!', 'success');
+        } catch (error) {
+            Swal.close();
+            Swal.fire('Error', 'There was an issue uploading your post', 'error');
+            console.error("Cloudinary upload error:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+>>>>>>> fe44b36 (post & another post)
 
     const logout = () => {
         const auth = getAuth();
         signOut(auth)
             .then(() => {
                 dispatch({ type: 'USER_LOGOUT' });
+<<<<<<< HEAD
                 console.log('User logged out successfully');
                 alert('User logged out successfully')
             })
@@ -89,6 +167,131 @@ const Home = () => {
     </div>
 </div>
 
+=======
+                Swal.fire('Logged Out', 'You have logged out successfully', 'success');
+            })
+            .catch((error) => {
+                Swal.fire('Error', 'Error during logout', 'error');
+                console.error('Error during logout:', error);
+            });
+    };
+
+    // Edit post function with SweetAlert
+    const editPost = (id, caption) => {
+        Swal.fire({
+            title: 'Edit your post',
+            input: 'textarea',
+            inputValue: caption,
+            showCancelButton: true,
+            confirmButtonText: 'Save Changes',
+            showLoaderOnConfirm: true,
+            preConfirm: (newCaption) => {
+                if (!newCaption) {
+                    Swal.showValidationMessage('Caption cannot be empty');
+                    return;
+                }
+
+                const postRef = doc(db, "posts", id);
+                return updateDoc(postRef, { caption: newCaption }).then(() => {
+                    Swal.fire('Updated!', 'Your post has been updated.', 'success');
+                }).catch((error) => {
+                    Swal.fire('Error', 'Failed to update the post', 'error');
+                    console.error('Error updating post:', error);
+                });
+            }
+        });
+    };
+
+    // Delete post function with SweetAlert
+    const deletePost = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Once deleted, you won't be able to recover this post!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it',
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                const postRef = doc(db, "posts", id);
+                return deleteDoc(postRef).then(() => {
+                    Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
+                }).catch((error) => {
+                    Swal.fire('Error', 'Failed to delete the post', 'error');
+                    console.error('Error deleting post:', error);
+                });
+            }
+        });
+    };
+
+    return (
+        <div className="home-container">
+            <header className="main-header">
+                <h1>Logo</h1>
+                {state?.isLogin ? (
+                    <button id="logout-btn" onClick={logout}>Logout</button>
+                ) : (
+                    <ul>
+                        <li><Link to="/login" className="nav-link">Login</Link></li>
+                        <li><Link to="/signup" className="nav-link">Signup</Link></li>
+                    </ul>
+                )}
+            </header>
+
+            <div id="home-main-container">
+                <div className="user-info">
+                    <img src={state?.user?.photoURL} alt="Profile" width={100} height={100} />
+                    <h1 id="user-name">{state?.user?.displayName}</h1>
+                    <h2 id="user-email">{state?.user?.email}</h2>
+                </div>
+
+                <div className="add-post">
+                    {loading ? (
+                        <div className="loader">
+                            <ClipLoader color="#fff" size={50} />
+                        </div>
+                    ) : (
+                        <form onSubmit={addPost}>
+                            <textarea
+                                placeholder="Write something..."
+                                value={caption}
+                                onChange={(e) => setCaption(e.target.value)}
+                            />
+                            <input
+                                type="file"
+                                onChange={(e) => setFile(e.target.files[0])}
+                            />
+                            <button type="submit">Add Post</button>
+                        </form>
+                    )}
+                </div>
+
+                {posts.map(post => (
+                    <div className="post-card" key={post.id}>
+                        <div className="profileLogo">
+                            <img src={post.userProfile} alt="profile" width={50} />
+                            <div className='username-date'>
+                            <p>{post.userName}</p>
+                            <small>{moment(post.createdAt).fromNow()}</small>
+                            </div>
+                        </div>
+                        <div className="post-content">
+                            <p>{post.caption}</p>
+                            <img src={post.imageUrl} alt="post" width={350} />
+                        </div>
+                        <div className="post-actions">
+                            <button className="edit-btn" onClick={() => editPost(post.id, post.caption)}>
+                                <FaEdit /> Edit
+                            </button>
+                            <button className="delete-btn" onClick={() => deletePost(post.id)}>
+                                <FaTrash /> Delete
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+>>>>>>> fe44b36 (post & another post)
     );
 };
 
